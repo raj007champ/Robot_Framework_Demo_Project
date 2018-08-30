@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.6.4 on win32)" generated="20180827 12:24:00.126">
+<suite id="s1" name="QcsLogin" source="C:\development\robot-scripts\Amazon-Keyword\Tests\QcsLogin.robot">
+<test id="s1-t1" name="QCS Valid Login Test">
+<kw name="Valid Login To Qcs" library="QCS_Login_Class">
+<arguments>
+<arg>${QCS_URL}</arg>
+</arguments>
+<status status="PASS" starttime="20180827 12:24:02.174" endtime="20180827 12:24:17.166"></status>
+</kw>
+<doc>Login test case with valid credentials</doc>
+<status status="PASS" starttime="20180827 12:24:02.173" endtime="20180827 12:24:17.168" critical="yes"></status>
+</test>
+<test id="s1-t2" name="QCS invalid Login Test">
+<kw name="Invalid Login To Qcs" library="QCS_Login_Class">
+<arguments>
+<arg>${QCS_URL}</arg>
+</arguments>
+<status status="PASS" starttime="20180827 12:24:17.173" endtime="20180827 12:24:29.767"></status>
+</kw>
+<kw name="Log Failed to login">
+<msg timestamp="20180827 12:24:29.776" level="FAIL">No keyword with name 'Log Failed to login' found.</msg>
+<status status="FAIL" starttime="20180827 12:24:29.776" endtime="20180827 12:24:29.776"></status>
+</kw>
+<doc>Login test case with invalid credentials</doc>
+<status status="FAIL" starttime="20180827 12:24:17.171" endtime="20180827 12:24:29.778" critical="yes">No keyword with name 'Log Failed to login' found.</status>
+</test>
+<status status="FAIL" starttime="20180827 12:24:00.127" endtime="20180827 12:24:29.783"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1">Critical Tests</stat>
+<stat pass="1" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="1" id="s1" name="QcsLogin">QcsLogin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
