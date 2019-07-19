@@ -1,11 +1,11 @@
 *** Settings ***
 Library  SeleniumLibrary
-Resource   C:/development/robot-scripts/Amazon-Keyword/Resources/PO/LandingPage.robot
-Resource   C:/development/robot-scripts/Amazon-Keyword/Resources/PO/TopNav.robot
-Resource   C:/development/robot-scripts/Amazon-Keyword/Resources/PO/SearchResults.robot
-Resource   C:/development/robot-scripts/Amazon-Keyword/Resources/PO/Product.robot
-Resource   C:/development/robot-scripts/Amazon-Keyword/Resources/PO/Cart.robot
-Resource   C:/development/robot-scripts/Amazon-Keyword/Resources/PO/SignIn.robot
+Resource   D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/PO/LandingPage.robot
+Resource   D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/PO/TopNav.robot
+Resource   D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/PO/SearchResults.robot
+Resource   D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/PO/Product.robot
+Resource   D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/PO/Cart.robot
+Resource   D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/PO/SignIn.robot
 
 *** Keywords ***
 Search for Products

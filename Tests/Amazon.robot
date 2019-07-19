@@ -1,15 +1,15 @@
 *** Settings ***
-Resource  C:/development/robot-scripts/Amazon-Keyword/Resources/Amazon.robot
-Resource  C:/development/robot-scripts/Amazon-Keyword/Resources/common.robot
+Resource  D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/Amazon.robot
+Resource  D:/Avaya/Utility Projects/RobotFrameworkProjects/Robot_Framework_Demo_Project/Resources/common.robot
 Test Setup  Begin Web Test
 Test Teardown  End Web Test
 
 # Copy/paste the below line to Terminal window to execute
 # robot -d results tests/amazon.robot
 *** Variables ***
-#${BROWSER} =  chrome
+${BROWSER} =  chrome
 ${URL} =  https://www.amazon.com
-${SEARCH_KEYWORD} =  Ferrari 450
+${SEARCH_KEYWORD} =  Apple MacBook
 
 *** Test Cases ***
 User must be able to search products

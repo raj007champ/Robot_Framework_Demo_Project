@@ -1,31 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.0.4 (Python 3.6.4 on win32)" generated="20180827 12:24:00.126">
-<suite id="s1" name="QcsLogin" source="C:\development\robot-scripts\Amazon-Keyword\Tests\QcsLogin.robot">
-<test id="s1-t1" name="QCS Valid Login Test">
-<kw name="Valid Login To Qcs" library="QCS_Login_Class">
+<robot generator="Robot 3.1.2 (Python 3.7.4 on win32)" generated="20190719 12:42:29.949" rpa="false">
+<suite id="s1" name="Amazon" source="D:\Avaya\Utility Projects\RobotFrameworkProjects\Robot_Framework_Demo_Project\tests\amazon.robot">
+<test id="s1-t1" name="User must be able to search products">
+<kw name="Begin Web Test" library="common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
 <arguments>
-<arg>${QCS_URL}</arg>
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
 </arguments>
-<status status="PASS" starttime="20180827 12:24:02.174" endtime="20180827 12:24:17.166"></status>
+<msg timestamp="20190719 12:42:33.044" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20190719 12:42:33.044" endtime="20190719 12:42:36.522"></status>
 </kw>
-<doc>Login test case with valid credentials</doc>
-<status status="PASS" starttime="20180827 12:24:02.173" endtime="20180827 12:24:17.168" critical="yes"></status>
-</test>
-<test id="s1-t2" name="QCS invalid Login Test">
-<kw name="Invalid Login To Qcs" library="QCS_Login_Class">
+<status status="PASS" starttime="20190719 12:42:33.043" endtime="20190719 12:42:36.523"></status>
+</kw>
+<kw name="Search for Products" library="Amazon">
+<kw name="Load" library="LandingPage">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
 <arguments>
-<arg>${QCS_URL}</arg>
+<arg>${URL}</arg>
 </arguments>
-<status status="PASS" starttime="20180827 12:24:17.173" endtime="20180827 12:24:29.767"></status>
+<msg timestamp="20190719 12:42:36.528" level="INFO">Opening url 'https://www.amazon.com'</msg>
+<status status="PASS" starttime="20190719 12:42:36.527" endtime="20190719 12:42:40.379"></status>
 </kw>
-<kw name="Log Failed to login">
-<msg timestamp="20180827 12:24:29.776" level="FAIL">No keyword with name 'Log Failed to login' found.</msg>
-<status status="FAIL" starttime="20180827 12:24:29.776" endtime="20180827 12:24:29.776"></status>
+<status status="PASS" starttime="20190719 12:42:36.527" endtime="20190719 12:42:40.379"></status>
 </kw>
-<doc>Login test case with invalid credentials</doc>
-<status status="FAIL" starttime="20180827 12:24:17.171" endtime="20180827 12:24:29.778" critical="yes">No keyword with name 'Log Failed to login' found.</status>
+<kw name="Verify Page Loaded" library="LandingPage">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Your Amazon.com</arg>
+</arguments>
+<status status="PASS" starttime="20190719 12:42:40.380" endtime="20190719 12:42:40.424"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:40.379" endtime="20190719 12:42:40.424"></status>
+</kw>
+<kw name="Search for Products" library="TopNav">
+<kw name="Enter Search Term" library="TopNav">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:twotabsearchtextbox</arg>
+<arg>${SEARCH_KEYWORD}</arg>
+</arguments>
+<msg timestamp="20190719 12:42:40.425" level="INFO">Typing text 'Apple MacBook' into text field 'id:twotabsearchtextbox'.</msg>
+<status status="PASS" starttime="20190719 12:42:40.425" endtime="20190719 12:42:42.205"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20190719 12:42:45.208" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20190719 12:42:42.205" endtime="20190719 12:42:45.209"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:40.425" endtime="20190719 12:42:45.209"></status>
+</kw>
+<kw name="Submit Search" library="TopNav">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="nav-search"]/form/div[2]/div/input</arg>
+</arguments>
+<msg timestamp="20190719 12:42:45.212" level="INFO">Clicking button 'xpath://*[@id="nav-search"]/form/div[2]/div/input'.</msg>
+<status status="PASS" starttime="20190719 12:42:45.211" endtime="20190719 12:42:48.119"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:45.210" endtime="20190719 12:42:48.120"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:40.424" endtime="20190719 12:42:48.120"></status>
+</kw>
+<kw name="Verify Search Completed" library="SearchResults">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>results for "${SEARCH_KEYWORD}"</arg>
+</arguments>
+<status status="PASS" starttime="20190719 12:42:48.120" endtime="20190719 12:42:48.167"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:48.120" endtime="20190719 12:42:48.168"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:36.526" endtime="20190719 12:42:48.168"></status>
+</kw>
+<kw name="End Web Test" library="common" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20190719 12:42:48.169" endtime="20190719 12:42:51.103"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:48.168" endtime="20190719 12:42:51.103"></status>
+</kw>
+<doc>This is some basic info about the test</doc>
+<tags>
+<tag>Smoke</tag>
+</tags>
+<status status="PASS" starttime="20190719 12:42:33.042" endtime="20190719 12:42:51.104" critical="yes"></status>
 </test>
-<status status="FAIL" starttime="20180827 12:24:00.127" endtime="20180827 12:24:29.783"></status>
+<test id="s1-t2" name="User must sign in to check out">
+<kw name="Begin Web Test" library="common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20190719 12:42:51.111" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20190719 12:42:51.111" endtime="20190719 12:42:54.153"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:51.110" endtime="20190719 12:42:54.153"></status>
+</kw>
+<kw name="Search for Products" library="Amazon">
+<kw name="Load" library="LandingPage">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20190719 12:42:54.156" level="INFO">Opening url 'https://www.amazon.com'</msg>
+<status status="PASS" starttime="20190719 12:42:54.156" endtime="20190719 12:42:57.954"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:54.155" endtime="20190719 12:42:57.954"></status>
+</kw>
+<kw name="Verify Page Loaded" library="LandingPage">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Your Amazon.com</arg>
+</arguments>
+<status status="PASS" starttime="20190719 12:42:57.955" endtime="20190719 12:42:57.997"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:57.954" endtime="20190719 12:42:57.997"></status>
+</kw>
+<kw name="Search for Products" library="TopNav">
+<kw name="Enter Search Term" library="TopNav">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:twotabsearchtextbox</arg>
+<arg>${SEARCH_KEYWORD}</arg>
+</arguments>
+<msg timestamp="20190719 12:42:57.999" level="INFO">Typing text 'Apple MacBook' into text field 'id:twotabsearchtextbox'.</msg>
+<status status="PASS" starttime="20190719 12:42:57.999" endtime="20190719 12:42:59.729"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20190719 12:43:02.732" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20190719 12:42:59.729" endtime="20190719 12:43:02.733"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:57.998" endtime="20190719 12:43:02.733"></status>
+</kw>
+<kw name="Submit Search" library="TopNav">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="nav-search"]/form/div[2]/div/input</arg>
+</arguments>
+<msg timestamp="20190719 12:43:02.735" level="INFO">Clicking button 'xpath://*[@id="nav-search"]/form/div[2]/div/input'.</msg>
+<status status="PASS" starttime="20190719 12:43:02.735" endtime="20190719 12:43:05.764"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:02.734" endtime="20190719 12:43:05.764"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:57.998" endtime="20190719 12:43:05.765"></status>
+</kw>
+<kw name="Verify Search Completed" library="SearchResults">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>results for "${SEARCH_KEYWORD}"</arg>
+</arguments>
+<status status="PASS" starttime="20190719 12:43:05.767" endtime="20190719 12:43:05.836"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:05.765" endtime="20190719 12:43:05.836"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:42:54.155" endtime="20190719 12:43:05.836"></status>
+</kw>
+<kw name="Select Product from Search Results" library="Amazon">
+<kw name="Click Product Link" library="SearchResults">
+<doc>Clicks on the first product in the search results list</doc>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="search"]/div[1]/div[2]/div/span[3]/div[1]/div[8]/div/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a</arg>
+</arguments>
+<msg timestamp="20190719 12:43:05.840" level="INFO">Clicking link '//*[@id="search"]/div[1]/div[2]/div/span[3]/div[1]/div[8]/div/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a'.</msg>
+<status status="PASS" starttime="20190719 12:43:05.839" endtime="20190719 12:43:10.510"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:05.838" endtime="20190719 12:43:10.510"></status>
+</kw>
+<kw name="Verify Page Loaded" library="Product">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Back to results</arg>
+</arguments>
+<status status="PASS" starttime="20190719 12:43:10.512" endtime="20190719 12:43:10.602"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:10.511" endtime="20190719 12:43:10.603"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:05.837" endtime="20190719 12:43:10.603"></status>
+</kw>
+<kw name="Add Product to Cart" library="Amazon">
+<kw name="Add to Cart" library="Product">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190719 12:43:15.609" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190719 12:43:10.605" endtime="20190719 12:43:15.609"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//input[@id="add-to-cart-button"]</arg>
+</arguments>
+<msg timestamp="20190719 12:43:15.610" level="INFO">Clicking element 'xpath=//input[@id="add-to-cart-button"]'.</msg>
+<status status="PASS" starttime="20190719 12:43:15.610" endtime="20190719 12:43:17.093"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:10.604" endtime="20190719 12:43:17.093"></status>
+</kw>
+<kw name="Verify Product Added" library="Cart">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Added to Cart</arg>
+</arguments>
+<status status="PASS" starttime="20190719 12:43:17.094" endtime="20190719 12:43:17.115"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:17.093" endtime="20190719 12:43:17.116"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:10.603" endtime="20190719 12:43:17.117"></status>
+</kw>
+<kw name="Begin Checkout" library="Amazon">
+<kw name="Proceed to Checkout" library="Cart">
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="hlb-ptc-btn-native"]</arg>
+</arguments>
+<msg timestamp="20190719 12:43:17.119" level="INFO">Clicking link 'xpath://*[@id="hlb-ptc-btn-native"]'.</msg>
+<status status="PASS" starttime="20190719 12:43:17.118" endtime="20190719 12:43:17.275"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>xpath://h1[@class="a-spacing-small"]</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190719 12:43:18.635" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-45.png"&gt;&lt;img src="selenium-screenshot-45.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190719 12:43:17.386" endtime="20190719 12:43:18.635"></status>
+</kw>
+<msg timestamp="20190719 12:43:18.708" level="FAIL">Page should have contained element 'xpath://h1[@class="a-spacing-small"]' but did not.</msg>
+<status status="FAIL" starttime="20190719 12:43:17.276" endtime="20190719 12:43:18.708"></status>
+</kw>
+<status status="FAIL" starttime="20190719 12:43:17.118" endtime="20190719 12:43:18.709"></status>
+</kw>
+<status status="FAIL" starttime="20190719 12:43:17.117" endtime="20190719 12:43:18.709"></status>
+</kw>
+<kw name="End Web Test" library="common" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20190719 12:43:18.710" endtime="20190719 12:43:21.459"></status>
+</kw>
+<status status="PASS" starttime="20190719 12:43:18.709" endtime="20190719 12:43:21.459"></status>
+</kw>
+<doc>This is some basic info about the test</doc>
+<tags>
+<tag>Smoke</tag>
+</tags>
+<status status="FAIL" starttime="20190719 12:42:51.107" endtime="20190719 12:43:21.461" critical="yes">Page should have contained element 'xpath://h1[@class="a-spacing-small"]' but did not.</status>
+</test>
+<status status="FAIL" starttime="20190719 12:42:29.956" endtime="20190719 12:43:21.467"></status>
 </suite>
 <statistics>
 <total>
@@ -33,9 +281,10 @@
 <stat pass="1" fail="1">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="1">Smoke</stat>
 </tag>
 <suite>
-<stat pass="1" fail="1" id="s1" name="QcsLogin">QcsLogin</stat>
+<stat pass="1" fail="1" id="s1" name="Amazon">Amazon</stat>
 </suite>
 </statistics>
 <errors>

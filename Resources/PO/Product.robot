@@ -6,8 +6,8 @@ Library  SeleniumLibrary
 
 *** Keywords ***
 Verify Page Loaded
-    Wait Until Page Contains  Back to search results
+    Wait Until Page Contains  Back to results
 
 Add to Cart
-    Sleep 5s
+    Sleep  5s
     Click Element  xpath=//input[@id="add-to-cart-button"]
